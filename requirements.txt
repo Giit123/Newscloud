@@ -1,0 +1,16 @@
+cssselect==1.2.0
+--find-links https://download.pytorch.org/whl/cpu/torch_stable.html
+torch==2.0.1
+--find-links https://download.pytorch.org/whl/cpu/torch_stable.html
+torchvision==0.15.2
+germansentiment==1.1.0
+HanTa==1.1.1
+langdetect==1.0.9
+lxml==4.9.2
+nltk==3.8.1
+psycopg2==2.9.3
+Requests==2.31.0
+SQLAlchemy==2.0.21
+streamlit==1.33.0
+wordcloud==1.9.2
+psutil==5.9.0
