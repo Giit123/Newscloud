@@ -142,7 +142,7 @@ class SQL_Worker:
         """Returns the path of the postgreSQL database on the local
         machine."""
         Pfad_aktuell = subprocess.Popen(
-            Constants.Pfad_DB_lokal,
+            Constants.PFAD_DB_LOKAL,
             shell=True,
             stdout=subprocess.PIPE
         ).stdout.read()

@@ -6,7 +6,7 @@
 LOKALE_IP = ''
 
 # Path to remote database on local machine
-Pfad_DB_lokal = ''
+PFAD_DB_LOKAL = ''
 
 # Fixed number of pages of the news website to be scraped per order
 ANZAHL_SEITEN = 3
