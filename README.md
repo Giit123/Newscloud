@@ -2,7 +2,7 @@
 
 (German version below!)
 
-Welcome to Newscloud! With this web app, you can create a word cloud by scraping german news for a specific search term. For example, the following word cloud was created for the search term "Twitter" on October 1, 2024. On this day, it was discussed (again) how much market value Twitter has lost since the takover by Elon Musk. The color of the word cloud is an indicator for the mean sentiment of the scraped news: the continuum ranges from red (negative) to green (positive). The sentiment is analyzed with [this model by Oliver Guhr](https://huggingface.co/oliverguhr/german-sentiment-bert).
+Welcome to Newscloud! With this web app, you can create a word cloud by scraping german news for a specific search term. For example, the following word cloud was created for the search term "Twitter" on October 1, 2024. On this day, it was discussed (again) how much market value Twitter has lost since the takeover by Elon Musk. The color of the word cloud is an indicator for the mean sentiment of the scraped news: the continuum ranges from red (negative) to green (positive). The sentiment is analyzed with [this model by Oliver Guhr](https://huggingface.co/oliverguhr/german-sentiment-bert).
 
 ![Preview_png](Preview.png)
 
