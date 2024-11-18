@@ -162,14 +162,16 @@ class User_Interface:
                 streamlit.markdown('### **Willkommen bei Newscloud!**')
                 streamlit.write('''Mit dieser Web App kannst du zu einem Suchbegriff eine Wordcloud
                     für deutschsprachige News erstellen. Dazu werden die Überschriften und
-                    Vorschautexte mehrerer Newsartikel gesammelt und analysiert. Die Gesamtmenge
-                    gesammelter **_Elemente_** besteht also aus Überschriften UND Vorschautexten.
+                    Vorschautexte mehrerer Newsartikel gesammelt und analysiert. Die
+                    **_Gesamtmenge_** gesammelter Elemente besteht also aus Überschriften UND
+                    Vorschautexten.
                     Aus dieser Gesamtmenge werden die Wörter für die Wordcloud extrahiert. Die
                     Größe der abgebildeten Wörter in der Wordcloud repräsentiert deren relative
-                    Häufigkeit in der Gesamtmenge. Die Anordnung der Wörter hat aber keine
-                    Bedeutung! Das gemittelte Sentiment (über alle Überschriften und Vorschautexte
+                    Häufigkeit in der Gesamtmenge. Die Anordnung der Wörter in der Wordcloud hat
+                    aber keine Bedeutung!
+                    Das gemittelte Sentiment (über alle Überschriften und Vorschautexte
                     wird durch die Farbe der Wordcloud dargestellt, s.
-                    [detaillierte Erläuterung unten](#72753e29). Schau auch mal in den Abschnitt zu
+                    [detaillierte Erläuterung unten](#72753e29)). Schau auch mal in den Abschnitt zu
                     [interessanten Suchtipps](#interessante-suchtipps)!''')
                 streamlit.write('''Jede neue Wordcloud und ihre zugehörigen Daten werden in einem
                     App-internen Tab im Bereich **"Ausgabe:"** (s. oben) dargestellt.
@@ -197,26 +199,28 @@ class User_Interface:
                     verarbeiteten Daten und auch die Rohdaten erscheinen unter der jeweiligen
                     Newscloud, sodass du dort nachvollziehen kannst, welche Daten aussortiert
                     wurden und wie alt die einzelnen Daten sind.''')
-                streamlit.write('''Das Sentiment wird nun für jede Überschrift und jeden
+                streamlit.write('''Das Sentiment wird zunächst für jede Überschrift und jeden
                     Vorschautext einzeln mit dem Package bzw. Sprachmodell
                     [german-sentiment-lib](https://huggingface.co/oliverguhr/german-sentiment-bert)
                     von Oliver Guhr analysiert. Eine negatives Sentiment wird danach intern mit
                     dem Wert -1 abgebildet, ein neutrales mit 0 und ein positives mit +1. Aus
                     diesen Einzelwerten wird ein Mittelwert gebildet. Ein Mittelwert von 0 äußert
                     sich in einer gelben Wordcloud. Ein Mittelwert von 0 könnte z. B. dadurch
-                    enstehen, dass alle Elemente ein neutrales Sentiment haben oder auch dadurch,
-                    dass die Elemente hälftig ein positives bzw. ein negatives Sentiment besitzen.
-                    Mittwerte unter bzw. über ± 0,33 werden auf ± 0,33 begrenzt. Mittelwerte über
-                    0 sind sehr selten. Die Farbe deiner Wordcloud wird also nur sehr selten ein
-                    kräftiges Grün sein. Orange oder rot werden dagegen etwas häufiger auftreten.
-                    Zwischen rot und grün gibt es mehere Abstufungen, wie du sehen wirst.''')
+                    enstehen, dass alle Elemente ein neutrales Sentiment besitzen oder auch
+                    dadurch, dass die Elemente hälftig ein positives bzw. ein negatives Sentiment
+                    besitzen. Mittwerte unter bzw. über ± 0,33 werden auf ± 0,33 begrenzt.
+                    Mittelwerte über 0 sind sehr selten. Die Farbe deiner Wordcloud wird also nur
+                    sehr selten ein kräftiges Grün sein. Orange oder rot werden dagegen etwas
+                    häufiger auftreten. Zwischen rot und grün gibt es mehere Abstufungen, wie du
+                    sehen wirst.''')
                 streamlit.write('''Das Sprachmodell wird das Sentiment oft anders beurteilen als
                     du. Das Sentiment spiegelt nicht die Meinung einer konkreten Person wider. Das
                     Sentiment ist auch nicht unmittelbar eine Bewertung deines Suchbegriffs (z. B.
-                    einer Person), sondern ist auch abhängig von Ereignissen im Zusammenhang mit
-                    deinem Suchbegriff. Auf diese Ereignisse hat eine Person manchmal gar keinen
-                    Einfluss. Du kannst das Sentiment für jedes Element unter der Wordcloud finden.
-                    Weiter unten finden sich auch die unverarbeiteten Rohdaten.''')
+                    einer Person, nach der du suchst), sondern ist auch abhängig von Ereignissen im
+                    Zusammenhang mit deinem Suchbegriff. Auf diese Ereignisse hat eine Person
+                    manchmal gar keinen Einfluss. Du kannst das Sentiment für jedes Element unter
+                    der Wordcloud finden. Weiter unten finden sich auch die unverarbeiteten
+                    Rohdaten.''')
                 streamlit.write('''Für die Wordcloud werden Bindestriche aus den Rohdaten entfernt
                     und die Wörter lemmatisiert. In der Wordcloud werden nur Lemmata bzw. Wörter
                     angezeigt, die Nomen oder Verben sind und mindestens 4 Mal vorkommen.
@@ -351,8 +355,8 @@ class User_Interface:
                                         + 'für ein neutrales und '
                                         + '<span style="color: hsl(120, 100%, 50%)">grün </span>'
                                         + '''für ein positives Sentiment. Mehr zur Berechnung des
-                                        Sentiments in der [Anleitung](#72753e29). Schau auch mal
-                                        in den Abschnitt zu
+                                        Sentiments findest du unten in der [Anleitung](#72753e29).
+                                        Schau auch mal in den Abschnitt zu
                                         [interessanten Suchtipps](#interessante-suchtipps)!''',
                                         unsafe_allow_html=True
                                         )
