@@ -1,8 +1,8 @@
 cssselect==1.2.0
 --find-links https://download.pytorch.org/whl/cpu/torch_stable.html
-torch==2.0.1
+torch==2.2.0
 --find-links https://download.pytorch.org/whl/cpu/torch_stable.html
-torchvision==0.15.2
+torchvision==0.17.0
 germansentiment==1.1.0
 HanTa==1.1.1
 langdetect==1.0.9

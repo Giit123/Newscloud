@@ -432,16 +432,15 @@ class ScraperWorker:
         self._funk_liste_ueberschriften_erweitern()
         self._funk_liste_vorschautexte_erweitern()
         
-        if self.anzahl_seiten > 1:
-            for i in range(0, self.anzahl_seiten - 1):
-                helpers.funk_schlafen(
-                    constants.SCHLAFEN_SEKUNDEN - 1,
-                    constants.SCHLAFEN_SEKUNDEN + 1
-                    )
-                self._funk_link_naechste_seite_updaten()
-                self._funk_html_objekt_naechste_seite_bearbeiten()
-                self._funk_liste_ueberschriften_erweitern()
-                self._funk_liste_vorschautexte_erweitern()
+        for i in range(0, self.anzahl_seiten - 1):
+            helpers.funk_schlafen(
+                constants.SCHLAFEN_SEKUNDEN - 1,
+                constants.SCHLAFEN_SEKUNDEN + 1
+                )
+            self._funk_link_naechste_seite_updaten()
+            self._funk_html_objekt_naechste_seite_bearbeiten()
+            self._funk_liste_ueberschriften_erweitern()
+            self._funk_liste_vorschautexte_erweitern()
 
         self._funk_ergebnisse_speichern()
   
@@ -523,10 +522,10 @@ class ScraperWorker:
             
             antwort_server = sitzung.get(
                 link,
-                cookies = self.cookies
+                cookies=self.cookies
                 )
 
-            helpers.funk_drucken('Antwort_Server:', antwort_server)
+            helpers.funk_drucken('antwort_server:', antwort_server)
             antwort_server_html = antwort_server.content.decode('ISO-8859-1')
             baum_html = html.fromstring(antwort_server_html)
           
@@ -719,14 +718,16 @@ class AnalyzerWorker:
                                             + self.liste_vorschautexte_clean
 
         if len(self.liste_gesamter_text_clean) < 1:
-            with self.user_interface.platzhalter_ausgabe_feedback:
-                streamlit.warning(f'''ACHTUNG!: Die gesammelte Textmenge ist zu gering.
-                    Wahscheinlich waren zu viele Suchergebnisse nicht in deutscher Sprache. Bitte
-                    versuche es mit einem anderen Suchbegriff erneut!''')
+            nachricht_fehler = f'''ACHTUNG!: Die gesammelte Textmenge ist zu gering.
+                Wahrscheinlich waren zu viele Suchergebnisse nicht in deutscher Sprache. Bitte
+                versuche es mit einem anderen Suchbegriff erneut!'''
                 
             self.eventmanager.funk_event_eingetreten(
                 arg_event_name='Vorzeitig_abgebrochen',
-                arg_argumente_von_event={}
+                arg_argumente_von_event={
+                                        'arg_art': 'Fehler',
+                                        'arg_nachricht': nachricht_fehler
+                                        }
                 )
 
         self._funk_sentiment_analysieren(arg_liste=self.liste_ueberschriften_clean)
