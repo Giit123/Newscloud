@@ -16,6 +16,7 @@ Classes:\n
 import streamlit
 
 import datetime
+import time
 from collections import Counter
 from statistics import mean
 import socket
@@ -479,7 +480,7 @@ class ScraperWorker:
         list in attribute liste_ueberschriften.
         """
         liste_elemente_ueberschriften = self.html_objekt.\
-            cssselect('h3.zBAuLc.l97dzf > div.BNeawe.vvjwJb.AP7Wnd')
+            cssselect('h3.zBAuLc.l97dzf > div.ilUpNd.UFvD1.aSRlid')
         
         for x in liste_elemente_ueberschriften:
             text = x.text_content()
@@ -491,7 +492,7 @@ class ScraperWorker:
         list in attribute liste_vorschautexte.
         """
         liste_elemente_vorschautexte = self.html_objekt.\
-            cssselect('div.BNeawe.s3v9rd.AP7Wnd > div:nth-child(1)')
+            cssselect('div.ilUpNd.H66NU.aSRlid > div:nth-child(1)')
         
         for x in liste_elemente_vorschautexte:
             text = x.text_content()            
@@ -525,10 +526,26 @@ class ScraperWorker:
                 cookies=self.cookies
                 )
 
+            # Set cookies
+            time.sleep(1)
+
+            url_fuer_post = ""
+            
+            daten_fuer_post = {
+                }
+
+            antwort_server_nach_post = sitzung.post(
+                url_fuer_post,
+                data=daten_fuer_post
+                )
+
+            time.sleep(1)
+
+            antwort_server = sitzung.get(link)
             helpers.funk_drucken('antwort_server:', antwort_server)
-            antwort_server_html = antwort_server.content.decode('ISO-8859-1')
+            antwort_server_html = antwort_server.content.decode('ISO-8859-1') 
             baum_html = html.fromstring(antwort_server_html)
-          
+
             return(baum_html)
 
 
