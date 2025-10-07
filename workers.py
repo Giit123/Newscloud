@@ -71,7 +71,7 @@ class sqlWorker:
         engine_erstellt -- Engine for postgreSQL database\n
         sql_session_macher -- Instance of sessionmaker which works with
         attribute engine_erstellt\n
-        sql_session_erstellt -- Active SQL Session of the instance to
+        sql_session_erstellt -- Active SQL session of the instance to
         work with\n
         tracker_objekt -- Object from database query which holds
         information about the current workload of the web app
@@ -90,9 +90,9 @@ class sqlWorker:
         objects from a list to the database.\n
         _funk_sql_commit -- Executes a controlled commit to the
         database with rollback if failed.\n
-        _funk_sql_neue_session_erstellen -- Renews the SQL Session in
+        _funk_sql_neue_session_erstellen -- Renews the SQL session in
         attribute sql_session_erstellt.\n
-        _funk_sql_session_schliessen -- Closes the SQL Session in
+        _funk_sql_session_schliessen -- Closes the SQL session in
         attribute sql_session_erstellt.\n
         _funk_sql_schema_erstellen -- Creates the SQL database schema.
     """
@@ -269,7 +269,7 @@ class sqlWorker:
             fehler_name = str(type(fehler).__name__)
             helpers.funk_drucken(f'BESTAETIGUNG!: Rollback nach {fehler_name} erfolgreich')  
             try:
-                self.SQL_Session_erstellt.rollback()
+                self.sql_session_erstellt.rollback()
                 helpers.funk_drucken(f'ACHTUNG!: Fehler bei rollback nach {fehler_name}')
             except:
                 pass
@@ -334,10 +334,10 @@ class ScraperWorker:
         _funk_html_objekt_erste_seite_bearbeiten -- Updates attribute
         html_objekt to HTML of the first news page for the current
         search term.\n
-        _Funk_html_objekt_naechste_Seite_bearbeiten -- Updates attribute
+        _funk_html_objekt_naechste_seite_bearbeiten -- Updates attribute
         html_objekt to HTML of the next news page following the current
         one.\n
-        _funk_link_naechste_Seite_updaten -- Updates attribute
+        _funk_link_naechste_seite_updaten -- Updates attribute
         link_naechste_seite to URL of the next news page following the
         current one.\n
         _funk_liste_ueberschriften_erweitern -- Appends all article
