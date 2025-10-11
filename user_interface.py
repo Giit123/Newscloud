@@ -1,4 +1,4 @@
-"""This module contains the class UserInterface.
+﻿"""This module contains the class UserInterface.
 
 Classes:\n
     UserInterface -- An instance of this class can perform all UI
@@ -79,7 +79,7 @@ class UserInterface:
         """inits UserInterface.
 
         Keyword arguments:\n
-        init_eventamanager -- Active instance of class Eventmanager
+        init_eventmanager -- Active instance of class Eventmanager
         """
         self.eventmanager = init_eventmanager
 
@@ -151,8 +151,7 @@ class UserInterface:
                 self.platzhalter_ausgabe_feedback = streamlit.empty()
                 self.platzhalter_ausgabe_ergebnisse = streamlit.empty()
 
-            # Scroll to the top
-            UserInterface._funk_scrollen(arg_element='summary.st-emotion-cache-p5msec.eqpbllx2')
+            UserInterface._funk_scrollen(arg_element='div.st-emotion-cache-18kf3ut')
             
             self.expander_anleitung = streamlit.expander('Anleitung:', expanded=True)
 
@@ -171,8 +170,8 @@ class UserInterface:
                     aber keine Bedeutung!
                     Das gemittelte Sentiment (über alle Überschriften und Vorschautexte
                     wird durch die Farbe der Wordcloud dargestellt, s.
-                    [detaillierte Erläuterung unten](#72753e29)). Schau auch mal in den Abschnitt zu
-                    [interessanten Suchtipps](#interessante-suchtipps)!''')
+                    [detaillierte Erläuterung unten](#detaillierte-erlaeuterung)). Schau auch mal
+                    in den Abschnitt zu [interessanten Suchtipps](#interessante-suchtipps)!''')
                 streamlit.write('''Jede neue Wordcloud und ihre zugehörigen Daten werden in einem
                     App-internen Tab im Bereich **"Ausgabe:"** (s. oben) dargestellt.
                     Ein erneuter Auftrag mit dem identischen Suchbegriff überschreibt die Daten
@@ -274,7 +273,7 @@ class UserInterface:
         # Clear Streamlit URL before running the script again
         streamlit.query_params.clear()
         
-        # Set session_state['Button_gedrueckt'] = True to tell the eventamanager in the subsequent
+        # Set session_state['Button_gedrueckt'] = True to tell the eventmanager in the subsequent
         # run of the main script that there are open jobs
         streamlit.session_state['Button_gedrueckt'] = True
 
@@ -342,8 +341,7 @@ class UserInterface:
                     with mittlere_spalte:
                         streamlit.image(
                             array,
-                            width=None,
-                            use_column_width='always',
+                            width="stretch",
                             output_format='PNG'
                             )
 
@@ -355,7 +353,7 @@ class UserInterface:
                                         + 'für ein neutrales und '
                                         + '<span style="color: hsl(120, 100%, 50%)">grün </span>'
                                         + '''für ein positives Sentiment. Mehr zur Berechnung des
-                                        Sentiments findest du unten in der [Anleitung](#72753e29).
+                                        Sentiments findest du unten in der [Anleitung](#willkommen-bei-newscloud).
                                         Schau auch mal in den Abschnitt zu
                                         [interessanten Suchtipps](#interessante-suchtipps)!''',
                                         unsafe_allow_html=True
@@ -365,12 +363,12 @@ class UserInterface:
                         streamlit.markdown('''Hier geht es direkt nach unten zu den
                             _verarbeiteten (d. h. ausgewerteten) Daten und zugehörigen Sentiments_
                             der
-                            [Überschriften](#59389694) oder der
+                            [Überschriften](#verarbeitete-ueberschriften) oder der
                             [Vorschautexte](#verarbeitete-vorschautexte).
                             ''')
                         streamlit.markdown('''Direkt nach unten zu den _Rohdaten_ (d. h. allen
                             gefundenen und ungekürzten Daten) der
-                            [Überschriften](#3e5eac6d) oder der
+                            [Überschriften](#rohdaten-ueberschriften) oder der
                             [Vorschautexte](#rohdaten-vorschautexte).
                             ''')
             
@@ -408,9 +406,7 @@ class UserInterface:
 
         self.platzhalter_ausgabe_spinner_01.empty()
 
-        # ACHTUNG!: überflüssige Zeile und Kommentare löschen
-        UserInterface._funk_scrollen(arg_element='summary.st-emotion-cache-p5msec.eqpbllx2') # Optionen
-        #UserInterface._funk_scrollen(arg_element='div.st-emotion-cache-1bt9eao') # Ausgabe
+        UserInterface._funk_scrollen(arg_element='div.st-emotion-cache-18kf3ut')
 
         streamlit.stop()
     
@@ -425,12 +421,14 @@ class UserInterface:
         arg_element -- HTML element to scroll to
         """
         dummy = datetime.datetime.now().timestamp()
+        
         import_komponenten.html(
-            f"""
-                <p>{dummy}</p>
-                <script>
-                    window.parent.document.querySelector('{arg_element}').scrollIntoView();
-                </script>
-            """,
-            height=0
+	        html=
+                f"""
+                    <!--<p>{dummy}</p>-->
+                    <script>
+                        window.parent.document.querySelector('{arg_element}').scrollIntoView();
+                    </script>
+                """,
+            height=1
             )

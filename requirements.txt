@@ -11,6 +11,6 @@ nltk==3.8.1
 psycopg2==2.9.3
 Requests==2.31.0
 SQLAlchemy==2.0.21
-streamlit==1.33.0
+streamlit==1.49.0
 wordcloud==1.9.2
 psutil==5.9.0
