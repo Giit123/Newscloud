@@ -404,7 +404,7 @@ class ScraperWorker:
         # Check whether the rate limit for all users is not reached
         self.sql_worker.funk_sql_tracker_updaten(arg_anzahl_seiten=self.anzahl_seiten)
         
-        self.suchbegriff = arg_auftrag_suchbegriff.lstrip().rstrip()
+        self.suchbegriff = "+".join(arg_auftrag_suchbegriff.strip().split())
                 
         self.liste_ueberschriften = []
         self.liste_vorschautexte = []
